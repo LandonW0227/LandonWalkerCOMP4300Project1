@@ -1,3 +1,5 @@
+using LandonWalkerCOMP4300Project1.Controllers;
+
 namespace LandonWalkerCOMP4300Project1
 {
     public class Program
@@ -8,6 +10,7 @@ namespace LandonWalkerCOMP4300Project1
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSingleton<VolumeConversionService>();
 
             var app = builder.Build();
 
