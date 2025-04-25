@@ -1,0 +1,54 @@
+﻿@page
+@model LandonWalkerCOMP4300Project1.Pages.VolumeConverterModel
+@{
+    ViewData["Title"] = "Volume Converter";
+}
+
+<h2 class="mb-4">Volume Converter</h2>
+
+<!-- Navigation Buttons -->
+<div class="mb-3">
+    <a asp-page="/Index" class="btn btn-outline-secondary me-2">Home</a>
+    <button type="button" class="btn btn-outline-warning" onclick="resetForm()">Reset</button>
+</div>
+
+<form method="post" id="conversionForm">
+    <div class="mb-3">
+        <label>Enter value:</label>
+        <input asp-for="InputValue" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>From unit:</label>
+        <select asp-for="FromUnit" asp-items="new SelectList(Model.Units)" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label>To unit:</label>
+        <select asp-for="ToUnit" asp-items="new SelectList(Model.Units)" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Convert</button>
+</form>
+
+@if (Model.ConvertedValue.HasValue)
+{
+    <div class="alert alert-success mt-3">
+        Result: <strong>@Model.ConvertedValue.Value</strong> @Model.ToUnit
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger mt-3">
+        @Model.ErrorMessage
+    </div>
+}
+
+@section Scripts {
+    <script>
+        function resetForm() {
+            document.getElementById("conversionForm").reset();
+        }
+    </script>
+}
