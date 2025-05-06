@@ -10,14 +10,15 @@
 <div class="mb-3">
     <a asp-page="/Index" class="btn btn-outline-secondary me-2">Home</a>
     <form method="post" asp-page-handler="Reset" id="conversionForm">
-        <button type="submit" class="btn btn-outline-warning">Reset</button>
+        <button type="submit" class="btn btn-outline-warning" onclick="resetForm()">Reset</button>
     </form>
 </div>
 
 <form method="post" id="conversionForm">
     <div class="mb-3">
-        <label>Enter value:</label>
-        <input asp-for="InputValue" class="form-control" />
+        <label for="InputValueRaw">Enter value:</label>
+        <input asp-for="InputValueRaw" class="form-control" />
+        <span class="text-danger">@Model.ErrorMessage</span>
     </div>
 
     <div class="mb-3">
@@ -50,7 +51,15 @@
 @section Scripts {
     <script>
         function resetForm() {
+            //Clear input fields
             document.getElementById("conversionForm").reset();
+
+            //Clear result and error areas
+            const resultArea = document.getElementById("resultArea");
+            const errorArea = document.getElementById("errorArea");
+
+            if (resultArea) resultArea.remove();
+            if (errorArea) errorArea.remove();
         }
     </script>
 }
