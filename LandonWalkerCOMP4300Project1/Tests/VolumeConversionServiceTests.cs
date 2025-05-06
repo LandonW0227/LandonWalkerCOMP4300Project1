@@ -15,7 +15,7 @@ namespace LandonWalkerCOMP4300Project1.Tests
         public void Convert_ReturnsExpectedResults(double input, string from, string to, double expected)
         {
             var result = _service.Convert(input, from, to);
-            Assert.True(Math.Abs(result - expected) < 0.01);
+            Assert.Equal(expected, result, precision: 2); // Compares up to 2 decimal places
         }
 
         [Fact]

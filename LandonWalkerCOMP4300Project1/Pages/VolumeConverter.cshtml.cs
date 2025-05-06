@@ -18,6 +18,16 @@ namespace LandonWalkerCOMP4300Project1.Pages
         public double? ConvertedValue { get; set; }
         public string? ErrorMessage { get; set; }
 
+        public void OnPostReset()
+        {
+            // Clear all bound properties
+            InputValue = 0.0;
+            FromUnit = null;
+            ToUnit = null;
+            ConvertedValue = 0.0;
+            ErrorMessage = null;
+        }
+
         public List<string> Units { get; } = ["Liters", "Milliliters", "Gallons", "Quarts", "Cups"];
 
         public void OnGet() { }

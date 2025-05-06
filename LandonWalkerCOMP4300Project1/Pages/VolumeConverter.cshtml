@@ -9,7 +9,9 @@
 <!-- Navigation Buttons -->
 <div class="mb-3">
     <a asp-page="/Index" class="btn btn-outline-secondary me-2">Home</a>
-    <button type="button" class="btn btn-outline-warning" onclick="resetForm()">Reset</button>
+    <form method="post" asp-page-handler="Reset" id="conversionForm">
+        <button type="submit" class="btn btn-outline-warning">Reset</button>
+    </form>
 </div>
 
 <form method="post" id="conversionForm">
